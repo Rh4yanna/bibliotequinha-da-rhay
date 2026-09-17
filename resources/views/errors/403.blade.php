@@ -1,0 +1,1 @@
+<x-library-layout title="Acesso restrito"><div class="panel empty"><div class="eyebrow">403 · ACESSO RESTRITO</div><h1>Seu perfil não permite esta ação.</h1><p>Consulte a bibliotecario ou entre com uma conta autorizada.</p><a class="btn primary" href="{{ route('dashboard') }}">Voltar ao início</a></div></x-library-layout>
