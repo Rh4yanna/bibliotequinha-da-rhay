@@ -42,6 +42,9 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if ($request->user()->loans()->exists()) {
+            return back()->withErrors(['account' => 'A conta possui histórico de empréstimos e precisa ser preservada.']);
+        }
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

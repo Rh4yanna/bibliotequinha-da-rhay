@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::resource('emprestimos', \App\Http\Controllers\LoanController::class)->only(['index', 'create', 'store', 'show', 'update'])->parameters(['emprestimos' => 'loan'])->names('loans');
     Route::resource('livros', BookController::class)->parameters(['livros' => 'book'])->names('books');
     Route::get('/categorias', [CategoryController::class, 'index'])->name('categories.index');
     Route::middleware('role:admin')->group(function () {

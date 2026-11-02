@@ -11,6 +11,7 @@
         <a class="brand" href="{{ route('dashboard') }}"><span><span class="brand-name">Bibliotequinha</span><span class="brand-owner">da Rhay</span><span class="brand-caption">SISTEMA DE BIBLIOTECA</span></span></a>
         <div class="nav-label">ESPAÇO DE LEITURA</div>
         <nav aria-label="Navegação principal">
+            <a class="{{ request()->routeIs('loans.*') ? 'selected' : '' }}" href="{{ route('loans.index') }}">Empréstimos</a>
             <a class="{{ request()->routeIs('dashboard') ? 'selected' : '' }}" href="{{ route('dashboard') }}"><span aria-hidden="true">▦</span> Visão geral</a>
             <a class="{{ request()->routeIs('books.*') ? 'selected' : '' }}" href="{{ route('books.index') }}"><span aria-hidden="true">▤</span> Livros</a>
             <a class="{{ request()->routeIs('categories.*') ? 'selected' : '' }}" href="{{ route('categories.index') }}"><span aria-hidden="true">◎</span> Categorias</a>

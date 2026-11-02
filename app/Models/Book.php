@@ -20,4 +20,9 @@ class Book extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function loans(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Loan::class);
+    }
 }

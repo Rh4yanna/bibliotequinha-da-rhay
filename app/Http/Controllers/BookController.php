@@ -28,7 +28,7 @@ class BookController extends Controller
             })
             ->when($filters['category_id'] ?? null, fn ($q, $id) => $q->where('category_id', $id))
             ->when($filters['status'] ?? null, fn ($q, $status) => $q->where('status', $status))
-            ->orderBy('title')->paginate(10)->withQueryString();
+            ->orderBy('title')->orderBy('id')->paginate(10)->withQueryString();
 
         return view('books.index', ['books' => $books, 'categories' => Category::orderBy('name')->get()]);
     }
@@ -42,7 +42,7 @@ class BookController extends Controller
 
     public function store(BookRequest $request)
     {
-        $book = Book::create($request->validated());
+        $book = app(\App\Services\BookService::class)->salvar($request->validated());
 
         return to_route('books.show', $book)->with('success', 'Livro cadastrado com sucesso.');
     }
@@ -63,7 +63,7 @@ class BookController extends Controller
 
     public function update(BookRequest $request, Book $book)
     {
-        $book->update($request->validated());
+        app(\App\Services\BookService::class)->salvar($request->validated(), $book);
 
         return to_route('books.show', $book)->with('success', 'Livro atualizado com sucesso.');
     }
@@ -71,7 +71,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         Gate::authorize('delete', $book);
-        $book->delete();
+        app(\App\Services\BookService::class)->excluir($book);
 
         return to_route('books.index')->with('success', 'Livro excluído com sucesso.');
     }

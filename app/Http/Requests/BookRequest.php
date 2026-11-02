@@ -19,12 +19,14 @@ class BookRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $this->merge(['code' => mb_strtoupper(trim((string) $this->code))]);
+        if ($this->has('code')) {
+            $this->merge(['code' => mb_strtoupper(trim((string) $this->code))]);
+        }
     }
 
     public function rules(): array
     {
-        return [
+        $rules = [
             'title' => ['required', 'string', 'min:2', 'max:200'],
             'author' => ['required', 'string', 'min:3', 'max:150'],
             'code' => ['required', 'alpha_dash:ascii', 'max:20', Rule::unique('books')->ignore($this->route('book'))],
@@ -34,6 +36,10 @@ class BookRequest extends FormRequest
             'status' => ['required', Rule::in(array_keys(Book::STATUSES))],
             'synopsis' => ['nullable', 'string', 'max:3000'],
         ];
+        if ($this->isMethod('PATCH')) {
+            foreach ($rules as &$fieldRules) { array_unshift($fieldRules, 'sometimes'); }
+        }
+        return $rules;
     }
 
     public function attributes(): array

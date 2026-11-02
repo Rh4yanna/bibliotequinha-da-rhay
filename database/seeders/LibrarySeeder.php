@@ -37,13 +37,13 @@ class LibrarySeeder extends Seeder
             ['Cultura e Comunidade', 'Rafael Oliveira', 'HIS'],
         ];
         foreach ($titles as $index => [$title, $author, $category]) {
-            Book::updateOrCreate(['code' => 'LIV-'.str_pad((string) ($index + 1), 4, '0', STR_PAD_LEFT)], [
+            Book::firstOrCreate(['code' => 'LIV-'.str_pad((string) ($index + 1), 4, '0', STR_PAD_LEFT)], [
                 'title' => $title,
                 'author' => $author,
                 'publication_year' => 2010 + $index % 15,
                 'publisher' => 'Editora Exemplo',
                 'category_id' => $categories[$category]->id,
-                'status' => $index % 7 === 0 ? 'indisponivel' : ($index % 5 === 0 ? 'emprestado' : 'disponivel'),
+                'status' => $index % 7 === 0 ? 'indisponivel' : 'disponivel',
                 'synopsis' => 'Exemplar fictício para demonstração do sistema de biblioteca.',
             ]);
         }

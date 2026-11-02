@@ -25,3 +25,6 @@ yarn-error.log
 /.zed
 /storage/app/postgres/
 /.env.testing
+/storage/app/backups/
+/storage/app/postgres-test/
+*.dump
