@@ -36,7 +36,7 @@ Backup customizado com pg_dump foi restaurado com pg_restore em banco local novo
 
 Autor permanece campo textual para evitar entidade redundante. Empréstimos não admitem exclusão nem alteração de tomador/exemplar: a atualização é a devolução. Registros antigos marcados emprestado sem tomador são preservados para reconciliação manual. Seeders não sobrescrevem livros existentes nem redefinem senhas de contas existentes.
 
-Neon está configurável com SSL, mas a conexão externa ainda depende das credenciais da estudante. Não houve teste visual em navegador ou teste de carga simultânea. O enunciado original em PDF não foi localizado no workspace; a implementação seguiu o documento fornecido e o código existente. A documentação registra os resultados reais e as pendências externas.
+Neon foi conectado com SSL e ativado após backup de origem/destino: 7 usuários, 16 livros e 4 categorias transferidos e conferidos por assinatura. Duas functions, duas procedures, três triggers e três índices foram confirmados; retirada/devolução via Laravel passou em transação revertida, sem registros de teste persistidos. A configuração local foi preservada em .env.local, sem apagar o PostgreSQL local. O conector recebeu compatibilidade com libpq 11.4 do XAMPP; a suite atualizada passou com 46 testes e 248 assertions em banco local isolado. Evidências adicionais em docs/NEON.md. Não houve teste visual em navegador ou teste de carga simultânea. O enunciado original em PDF não foi localizado no workspace; a implementação seguiu o documento fornecido e o código existente.
 
 ## Materiais de entrega
 

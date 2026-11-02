@@ -1,0 +1,10 @@
+Backup local completo: OK
+Backup do destino Neon vazio: OK
+Estrutura, dados de biblioteca e objetos SQL transferidos: OK
+users: 7 registros; assinatura igual à origem
+categories: 4 registros; assinatura igual à origem
+books: 16 registros; assinatura igual à origem
+loans: 0 registros; assinatura igual à origem
+loan_audits: 0 registros; assinatura igual à origem
+migrations: 10 registros; assinatura igual à origem
+Transferência validada. Banco local preservado.

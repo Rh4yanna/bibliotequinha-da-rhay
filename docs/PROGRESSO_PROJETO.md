@@ -6,7 +6,7 @@ Data da execução: 02/11/2026. O documento fornecido foi usado como especifica�
 |---|---|---|---|
 | 1 Diagnóstico | Laravel 12, Breeze, livros/categorias | Matriz em DIAGNOSTICO.md | Inspeção realizada |
 | 2 Arquitetura | Exemplar com autor textual | Empréstimos com histórico e limite | ARQUITETURA.md |
-| 3 PostgreSQL/Neon | PostgreSQL configurado, sem SSL variável | DB_SSLMODE configurável | Neon pendente de credenciais |
+| 3 PostgreSQL/Neon | PostgreSQL configurado, sem SSL variável | SSL e compatibilidade libpq, transferência com backups | Neon conectado e validado; docs/NEON.md |
 | 4 Dados | Migrations, factories de usuário, seeders existentes | Migrations incrementais e seed sem sobrescrever livros | Testado em PostgreSQL |
 | 5 Autorização | admin/bibliotecario/consulta | Policy de empréstimos e autenticação de API | Testado |
 | 6 Web | CRUD de livros/categorias existente | Registro, consulta e devolução de empréstimos | Testado |
@@ -22,4 +22,4 @@ Data da execução: 02/11/2026. O documento fornecido foi usado como especifica�
 
 Branch: feat/bibliotequinha-segundo-bimestre. Arquivos não rastreados preexistentes foram preservados. Não houve push/publicação. Nenhum banco real foi apagado.
 
-Validação final: 45 testes/243 assertions aprovados no PostgreSQL; build de produção concluído; HTTP real /login 200 e /api/livros sem token 401. Backup/restauração em banco isolado com contagens e assinatura conferidas. Banco atual recebeu backup e migrations incrementais. Relatório PDF gerado. Pendências externas: credenciais Neon e autorização acadêmica de entrega individual. Sem revisão visual em navegador ou teste de carga.
+Validação atualizada: 46 testes/248 assertions aprovados no PostgreSQL isolado; build de produção concluído; HTTP /login 200. Neon conectado e ativo com SSL, dados transferidos após backups e conferidos por assinatura. Retirada/devolução e auditoria validadas no Neon com ROLLBACK. PostgreSQL local preservado, configuração anterior em .env.local. Evidências em docs/NEON.md. Pendência externa: autorização acadêmica de entrega individual. Sem revisão visual em navegador ou teste de carga.

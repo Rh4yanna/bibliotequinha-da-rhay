@@ -177,7 +177,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
 endobj
 8 0 obj
-<< /Length 2950 >>
+<< /Length 3460 >>
 stream
 BT
 50 790 Td
@@ -261,16 +261,31 @@ T*
 () Tj
 T*
 /F1 10 Tf
-(Neon está configurável com SSL, mas a conexão externa ainda depende das credenciais da) Tj
+(Neon foi conectado com SSL e ativado após backup de origem/destino: 7 usuários, 16 livros e 4) Tj
 T*
 /F1 10 Tf
-(estudante. Não houve teste visual em navegador ou teste de carga simultânea. O enunciado) Tj
+(categorias transferidos e conferidos por assinatura. Duas functions, duas procedures, três) Tj
 T*
 /F1 10 Tf
-(original em PDF não foi localizado no workspace; a implementação seguiu o documento fornecido) Tj
+(triggers e três índices foram confirmados; retirada/devolução via Laravel passou em transação) Tj
 T*
 /F1 10 Tf
-(e o código existente. A documentação registra os resultados reais e as pendências externas.) Tj
+(revertida, sem registros de teste persistidos. A configuração local foi preservada em) Tj
+T*
+/F1 10 Tf
+(.env.local, sem apagar o PostgreSQL local. O conector recebeu compatibilidade com libpq 11.4) Tj
+T*
+/F1 10 Tf
+(do XAMPP; a suite atualizada passou com 46 testes e 248 assertions em banco local isolado.) Tj
+T*
+/F1 10 Tf
+(Evidências adicionais em docs/NEON.md. Não houve teste visual em navegador ou teste de carga) Tj
+T*
+/F1 10 Tf
+(simultânea. O enunciado original em PDF não foi localizado no workspace; a implementação) Tj
+T*
+/F1 10 Tf
+(seguiu o documento fornecido e o código existente.) Tj
 T*
 /F1 10 Tf
 () Tj
@@ -309,5 +324,5 @@ xref
 trailer
 << /Size 9 /Root 1 0 R >>
 startxref
-7215
+7725
 %%EOF

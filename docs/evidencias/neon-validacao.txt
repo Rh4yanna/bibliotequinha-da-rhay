@@ -1,0 +1,10 @@
+Laravel conectado ao Neon: OK
+users: 7 registros
+books: 16 registros
+categories: 4 registros
+loans: 0 registros
+loan_audits: 0 registros
+migrations: 10 registros
+Objetos: 2 functions, 2 procedures, 3 triggers e 3 índices confirmados
+Retirada, devolução, functions e auditoria via Laravel: OK
+Validação revertida por ROLLBACK: nenhum registro de teste persistido

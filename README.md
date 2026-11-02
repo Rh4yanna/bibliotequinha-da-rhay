@@ -92,7 +92,7 @@ Essas contas são apenas para desenvolvimento/testes: **não usar em produção*
 
 ## Neon e extensão PHP
 
-Crie um projeto PostgreSQL no console Neon e copie os dados de conexão para seu `.env` local: DB_CONNECTION=pgsql, DB_HOST (host fornecido), DB_PORT=5432, DB_DATABASE e DB_USERNAME fornecidos, DB_PASSWORD e **DB_SSLMODE=require**. Não comite `.env` nem URLs com senha. Use host direto para backup/restauração; não dependa do pooler para operações administrativas. A conexão real ao Neon ainda depende das credenciais da estudante.
+Crie um projeto PostgreSQL no console Neon e copie os dados de conexão para seu `.env` local: DB_CONNECTION=pgsql, DB_HOST (host fornecido), DB_PORT=5432, DB_DATABASE e DB_USERNAME fornecidos, DB_PASSWORD e **DB_SSLMODE=require**. Não comite `.env` nem URLs com senha. Use host direto para backup/restauração; não dependa do pooler para operações administrativas. A conexão real ao Neon foi validada e ativada em 02/11/2026; veja [docs/NEON.md](docs/NEON.md) para transferência, evidências e retorno ao banco local.
 
 Habilite `extension=pdo_pgsql` no php.ini do PHP CLI. Nesta máquina Windows, o driver também pode ser habilitado sem alterar o PHP global:
 

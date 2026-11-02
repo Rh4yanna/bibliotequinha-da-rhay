@@ -1,0 +1,12 @@
+PHPUnit 11.5.56 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.12
+Configuration: C:\Users\Rhayanna\OneDrive\Desktop\ProjLaravel\phpunit.pgsql.xml
+
+..............................................                    46 / 46 (100%)
+
+Time: 00:04.709, Memory: 50.00 MB
+
+OK (46 tests, 248 assertions)
+waiting for server to shut down.... done
+server stopped

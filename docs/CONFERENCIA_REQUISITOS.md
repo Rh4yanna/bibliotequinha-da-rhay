@@ -12,7 +12,7 @@
 | API REST e Resource | routes/api.php, BookResource | BookApiTest | Testado |
 | Autenticação API | AuthenticateApiToken, api:token | 401/403/expiração | Testado |
 | PostgreSQL | config/database.php | suite PostgreSQL 18 | Testado localmente |
-| Neon/SSL | DB_SSLMODE no exemplo/config | configurar credenciais e migrate:status | Pendente externo |
+| Neon/SSL | NeonPostgresConnector, docs/NEON.md | scripts/validate-neon.php, migrate:status | Conectado, transferido e testado |
 | Dois índices de desempenho | books_title_order_idx, loans_active_user_idx | 01_library_objects.sql, EXPLAIN em evidência | Criados/testados |
 | Duas functions de negócio | fn_quantidade_emprestimos_ativos, fn_livro_disponivel | SELECT/LoanService | Criadas/testadas |
 | Duas procedures | sp_registrar_emprestimo/devolucao | CALL/LoanService | Criadas/testadas |
@@ -26,4 +26,4 @@
 | Git e privacidade | branch feat/bibliotequinha-segundo-bimestre, .gitignore | git status/diff/check-ignore | Histórico preservado, sem push |
 | Entrega individual | RELATORIO_ENTREGA.md | confirmar com professor | Pendente externo |
 
-Limites honestos: Neon não foi acessado; não houve publicação/push, teste visual em navegador nem benchmark de carga. Autor foi preservado como texto e consulta como papel leitor, sem entidades ou integrantes inventados. Empréstimos não permitem exclusão de histórico; cadastro, consulta e devolução atendem ao domínio. Documentação antiga pode descrever a versão anterior.
+Limites honestos: não houve publicação/push, teste visual em navegador nem benchmark de carga. Neon foi acessado e validado; credenciais e dumps permanecem privados. Autor foi preservado como texto e consulta como papel leitor, sem entidades ou integrantes inventados. Empréstimos não permitem exclusão de histórico; cadastro, consulta e devolução atendem ao domínio. Documentação antiga pode descrever a versão anterior.
