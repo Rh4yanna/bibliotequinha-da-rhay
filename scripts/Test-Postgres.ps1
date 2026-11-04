@@ -1,5 +1,6 @@
-﻿param([string]$PostgresBin = 'C:\Program Files\PostgreSQL\18\bin', [switch]$Backup)
+﻿param([string]$PostgresBin = 'C:\Program Files\PostgreSQL\18\bin', [switch]$Backup, [switch]$Entrega)
 $ErrorActionPreference = 'Stop'
+if ($Entrega) { $Backup = $true }
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $dataPath = Join-Path $projectRoot 'storage\app\postgres-test\data'
 $testEnvPath = Join-Path $projectRoot '.env.testing'
@@ -62,6 +63,9 @@ try {
             Check-Exit 'segunda execução incremental'
             php artisan db:seed --env=testing --force
             Check-Exit 'seed'
+            if ($Entrega) {
+                & (Join-Path $PSScriptRoot 'Validate-SqlDelivery.ps1') -PostgresBin $PostgresBin
+            }
             $readerId = & (Join-Path $PostgresBin 'psql.exe') -w -h 127.0.0.1 -p $port -U $dbUser -d $database -tAc "SELECT id FROM users WHERE email = 'consulta@biblioteca.test'"
             Check-Exit 'leitor de demonstração'
             $bookId = & (Join-Path $PostgresBin 'psql.exe') -w -h 127.0.0.1 -p $port -U $dbUser -d $database -tAc "SELECT id FROM books WHERE code = 'LIV-0002'"

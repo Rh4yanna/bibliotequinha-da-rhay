@@ -1,0 +1,274 @@
+PHPUnit 11.5.56 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.12
+Configuration: C:\Users\Rhayanna\OneDrive\Desktop\ProjLaravel\phpunit.pgsql.xml
+
+..............................................                    46 / 46 (100%)
+
+Time: 01:27.876, Memory: 52.00 MB
+
+OK (46 tests, 248 assertions)
+
+   INFO  Nothing to migrate.
+
+
+   INFO  Nothing to migrate.
+
+
+   INFO  Seeding database.
+
+  Database\Seeders\DemoUserSeeder ............................................................................ RUNNING
+  Database\Seeders\DemoUserSeeder ........................................................................ 702 ms DONE
+
+  Database\Seeders\LibrarySeeder ............................................................................. RUNNING
+  Database\Seeders\LibrarySeeder .......................................................................... 28 ms DONE
+
+SQL fictício gerado: 3 usuários sem senha conhecida, 4 categorias, 16 livros e histórico.
+SET
+SET
+SET
+SET
+SET
+SET
+ set_config
+------------
+
+(1 row)
+
+SET
+SET
+SET
+SET
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE PROCEDURE
+CREATE PROCEDURE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+SET
+SET
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+CREATE TABLE
+CREATE SEQUENCE
+ALTER SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ setval
+--------
+     49
+(1 row)
+
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ setval
+--------
+     23
+(1 row)
+
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ setval
+--------
+     51
+(1 row)
+
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ setval
+--------
+     10
+(1 row)
+
+DO
+BEGIN
+DO
+powershell : psql:C:/Users/Rhayanna/OneDrive/Desktop/ProjLaravel/database/sql/04_validacao_local.sql:32: NOTICE:  SQL
+validado: dados, functions, procedures, triggers e rejeição de duplicidade.
+No linha:2 caractere:1
++ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/Test-Post ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (psql:C:/Users/R...de duplicidade.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+ROLLBACK
+ usuarios | categorias | livros | emprestimos | auditorias
+----------+------------+--------+-------------+------------
+        3 |          4 |     16 |           2 |          3
+(1 row)
+
+Backup fictício restaurado: 3 usuários, 4 categorias, 16 livros, 2 empréstimos e 3 auditorias; conteúdo idêntico.
+BEGIN
+DO
+psql:C:/Users/Rhayanna/OneDrive/Desktop/ProjLaravel/database/sql/04_validacao_local.sql:32: NOTICE:  SQL validado:
+dados, functions, procedures, triggers e rejeição de duplicidade.
+ROLLBACK
+ usuarios | categorias | livros | emprestimos | auditorias
+----------+------------+--------+-------------+------------
+        3 |          4 |     16 |           2 |          3
+(1 row)
+
+SHA256 backup-ficticio.dump: BE37561896C285FF935A078236931A379A6BFF11E719B76A962659A0271C9246
+CALL
+ fn_quantidade_emprestimos_ativos | fn_livro_disponivel
+----------------------------------+---------------------
+                                0 | f
+(1 row)
+
+                                                    QUERY PLAN
+-------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=11.26..11.29 rows=10 width=426) (actual time=0.035..0.036 rows=10.00 loops=1)
+   Buffers: shared hit=7
+   ->  Sort  (cost=11.26..11.36 rows=40 width=426) (actual time=0.034..0.034 rows=10.00 loops=1)
+         Sort Key: title, id
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=7
+         ->  Seq Scan on books  (cost=0.00..10.40 rows=40 width=426) (actual time=0.008..0.009 rows=16.00 loops=1)
+               Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.060 ms
+ Execution Time: 0.045 ms
+(12 rows)
+
+                                                           QUERY PLAN
+---------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using loans_active_user_idx on loans  (cost=0.14..8.16 rows=1 width=60) (actual time=0.010..0.010 rows=0.00 loops=1)
+   Index Cond: (user_id = 1)
+   Index Searches: 1
+   Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=17 read=1
+ Planning Time: 0.809 ms
+ Execution Time: 0.017 ms
+(8 rows)
+
+ loan_id | operation |     created_at
+---------+-----------+---------------------
+      10 | INSERT    | 2026-11-04 20:24:12
+(1 row)
+
+Backup/restauração: origem=3|16|4|1|1 destino=3|16|4|1|1
+Dados conferidos: assinatura=888e181deaa04382e514ab25dd9017ea
+CALL
+ fn_quantidade_emprestimos_ativos
+----------------------------------
+                                0
+(1 row)
+
+ operation
+-----------
+ INSERT
+ UPDATE
+(2 rows)

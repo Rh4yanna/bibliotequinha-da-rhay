@@ -7,7 +7,7 @@ jobs:
       postgres:
         image: postgres:18
         env:
-          POSTGRES_DB: campus_test
+          POSTGRES_DB: bibliotequinha_test
           POSTGRES_USER: campus
           POSTGRES_PASSWORD: testing
         ports: ['5432:5432']
@@ -31,12 +31,11 @@ jobs:
       - run: cp .env.example .env
       - run: php artisan key:generate
       - run: npm ci && npm run build
-      - run: vendor/bin/pint --test
-      - run: php artisan test
+      - run: php vendor/phpunit/phpunit/phpunit --configuration=phpunit.pgsql.xml
         env:
           DB_CONNECTION: pgsql
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
-          DB_DATABASE: campus_test
+          DB_DATABASE: bibliotequinha_test
           DB_USERNAME: campus
           DB_PASSWORD: testing

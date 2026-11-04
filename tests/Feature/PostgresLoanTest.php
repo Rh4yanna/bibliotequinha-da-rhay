@@ -19,7 +19,7 @@ class PostgresLoanTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        if (DB::getDriverName() !== 'pgsql') { $this->markTestSkipped('Requer PostgreSQL isolado; ver docs/TESTES.md.'); }
+        if (DB::getDriverName() !== 'pgsql') { $this->markTestSkipped('Requer PostgreSQL isolado; ver README.md.'); }
     }
 
     private function book(string $code = 'SQL-1'): Book

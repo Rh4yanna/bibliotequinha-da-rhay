@@ -1,13 +1,17 @@
-"""Gera PDF textual A4 do relatório, usando somente a biblioteca padrão Python."""
+"""Gera o PDF obrigatório a partir do README único, sem criar outra documentação."""
 from pathlib import Path
 import re
 import textwrap
 
 root = Path(__file__).resolve().parent.parent
-source = root / "docs/RELATORIO_ENTREGA.md"
-target = source.with_suffix(".pdf")
-lines = []
+source = root / "README.md"
+target = root / "docs/RELATORIO_ENTREGA.pdf"
+lines = [("Relatório de entrega — Bibliotequinha da Rhay 2.0", True), ("Autora: Rhayanna | Revisão para entrega em 04/11/2026", False), ("", False)]
 for paragraph in source.read_text(encoding="utf-8").splitlines():
+    if paragraph.startswith("```"):
+        continue
+    paragraph = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1 (\2)", paragraph)
+    paragraph = paragraph.replace("`", "")
     heading = paragraph.startswith("#")
     text = re.sub(r"^#+\s*", "", paragraph).replace("**", "")
     for line in textwrap.wrap(text, width=94) or [""]:

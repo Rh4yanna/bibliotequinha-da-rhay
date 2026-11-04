@@ -28,3 +28,4 @@ yarn-error.log
 /storage/app/backups/
 /storage/app/postgres-test/
 *.dump
+/storage/app/entrega-local/
