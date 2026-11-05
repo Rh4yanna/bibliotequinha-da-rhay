@@ -8,7 +8,7 @@ root = Path(__file__).resolve().parent.parent
 destination = root / "storage/app/entrega-local"
 destination.mkdir(parents=True, exist_ok=True)
 files = [
-    "README.md", "docs/RELATORIO_ENTREGA.pdf",
+    "README.md",
     "docs/evidencias/finalizacao-local.txt", "docs/evidencias/postgres-validacao.txt",
     "docs/evidencias/neon-transferencia.txt", "docs/evidencias/neon-validacao.txt",
     "docs/evidencias/neon-testes-isolados.txt",
